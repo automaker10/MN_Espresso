@@ -19,7 +19,7 @@ Reference: [I write Scenario in Google Sheet.](http://bit.ly/34t1JDg)
 ### Report Espresso Testing: ### 
 Change package project navigation is "Project".\
 File Report is found: `.../presentation/build/report/...` \
-name: `Test Result - Test_in_... .html` \
+name: `Test Result - Test_in_... .html`
 
 ### How to run the app: ###
 This app uses [The MovieDB public API](https://developers.themoviedb.org/3/getting-started/introduction).
