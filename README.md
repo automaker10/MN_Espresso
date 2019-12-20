@@ -20,6 +20,7 @@ Reference: [I write Scenario in Google Sheet.](http://bit.ly/34t1JDg)
 Change package project navigation is "Project".\
 File Report is found: `.../presentation/build/report/...` \
 name: `Test Result - Test_in_xxx .html`
+![Screenshots](https://github.com/automaker10/MN_Espresso/blob/master/screenshots/report.jpg)
 
 ### How to run the app: ###
 This app uses [The MovieDB public API](https://developers.themoviedb.org/3/getting-started/introduction).
