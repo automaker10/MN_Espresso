@@ -21,6 +21,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            testCoverageEnabled = true
+        }
     }
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -77,6 +80,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'recyclerview-v7'
     }
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
-    implementation 'com.googlecode.json-simple:json-simple:1.1'
+    androidTestImplementation 'com.googlecode.json-simple:json-simple:1.1'
+
 
 }

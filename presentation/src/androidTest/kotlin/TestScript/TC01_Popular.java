@@ -1,14 +1,23 @@
-package com.yossisegev.movienight;
+package TestScript;
 
 import android.os.RemoteException;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.ViewAction;
 import android.support.test.espresso.ViewInteraction;
+import android.support.test.espresso.action.GeneralLocation;
+import android.support.test.espresso.action.GeneralSwipeAction;
+import android.support.test.espresso.action.Press;
+import android.support.test.espresso.action.Swipe;
+import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+
+import com.yossisegev.movienight.MainActivity;
+import com.yossisegev.movienight.R;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -40,15 +49,17 @@ public class TC01_Popular {
     public void TC01_Popular() {
         Random random = new Random();
         ViewInteraction recycleView;
+        String[] no = {"3","4"};
 
         try {
             Thread.sleep(2500);
-            int num = 2;
-            for(int i=0 ;i< num;i++){
+            for(int i=0 ;i< no.length;i++){
 
-                recycleView = onView(allOf(withId(R.id.popular_movies_recyclerview)));
-                recycleView.perform(actionOnItemAtPosition(random.nextInt(19), click()));
+                recycleView = onView(allOf(ViewMatchers.withId(R.id.popular_movies_recyclerview)));
+                recycleView.perform(actionOnItemAtPosition(Integer.parseInt(no[i]), click()));
                 Thread.sleep(1000);
+
+                swipeFromTopToBottom();
 
                 recycleView = onView(allOf(withId(R.id.details_videos),
                         childAtPosition(withId(R.id.details_video_section), 2)));
@@ -70,7 +81,8 @@ public class TC01_Popular {
                     withContentDescription("My Favorites"), isDisplayed()));
             recycleView.perform(click());
 
-            for(int k = 0; k < num; k++){
+            for(int k = 0; k < no.length; k++){
+
                 recycleView = onView(allOf(withId(R.id.favorite_movies_recyclerview)));
                 recycleView.perform(actionOnItemAtPosition(0, click()));
 
@@ -107,6 +119,11 @@ public class TC01_Popular {
                         && view.equals(((ViewGroup) parent).getChildAt(position));
             }
         };
+    }
+
+    private static ViewAction swipeFromTopToBottom() {
+        return new GeneralSwipeAction(Swipe.FAST, GeneralLocation.TOP_CENTER,
+                GeneralLocation.BOTTOM_CENTER, Press.FINGER);
     }
 
 }

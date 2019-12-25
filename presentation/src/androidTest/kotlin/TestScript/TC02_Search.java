@@ -1,9 +1,13 @@
-package com.yossisegev.movienight;
+package TestScript;
 
 import android.support.test.espresso.ViewInteraction;
+import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+
+import com.yossisegev.movienight.MainActivity;
+import com.yossisegev.movienight.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,7 +36,7 @@ public class TC02_Search {
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void Search(){
+    public void TC02_Search(){
 
         String json = null;
         String name = null;
@@ -40,7 +44,7 @@ public class TC02_Search {
         String flag ;
 
         try{
-            ViewInteraction bottomNavigationItemView = onView(allOf(withId(R.id.action_search),
+            ViewInteraction bottomNavigationItemView = onView(allOf(ViewMatchers.withId(R.id.action_search),
                     withContentDescription("Search"),isDisplayed()));
             bottomNavigationItemView.perform(click());
 
@@ -58,7 +62,6 @@ public class TC02_Search {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     jsonObjectAsString = jsonObject.toString();
-                    System.out.println("==============================" + jsonObjectAsString + "============================");
                 }
 
                 //Input data JSON to App
